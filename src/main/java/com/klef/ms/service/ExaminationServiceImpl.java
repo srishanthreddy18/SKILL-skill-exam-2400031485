@@ -3,15 +3,17 @@ package com.klef.ms.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.klef.ms.entity.Examination;
 import com.klef.ms.repository.ExaminationRepository;
 @Service
 public class ExaminationServiceImpl implements ExaminationService{
-@Autowired
-private ExaminationRepository examinationRepository;
+	private final ExaminationRepository examinationRepository;
+
+	public ExaminationServiceImpl(ExaminationRepository examinationRepository) {
+		this.examinationRepository = examinationRepository;
+	}
 	@Override
 	public Examination addExamination(Examination examination) {
 		return examinationRepository.save(examination);
